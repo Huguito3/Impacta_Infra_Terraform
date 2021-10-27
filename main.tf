@@ -175,7 +175,7 @@ resource "null_resource" "install_" {
     }
     inline = [
       "sudo apt update",
-      "sudo apt-get install mysql-server"
+      "sudo apt-get install -y mysql-server-5.7"
     ]
   }
 
