@@ -78,7 +78,7 @@ resource "azurerm_network_security_group" "nsg-hugo" {
 
  security_rule {
     name                       = "mySql"
-    priority                   = 100
+    priority                   = 200
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -88,18 +88,7 @@ resource "azurerm_network_security_group" "nsg-hugo" {
     destination_address_prefix = "*"
   }
 
-  
- security_rule {
-    name                       = "apache"
-    priority                   = 200
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    destination_port_range     = "80"
-    source_address_prefix      = "*"
-    destination_address_prefix = "*"
-  }
+
   tags = {
     environment = "Production"
   }
@@ -134,7 +123,7 @@ resource "azurerm_virtual_machine" "vm-hugo" {
   storage_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
+    sku       = "18.04-LTS"
     version   = "latest"
   }
   storage_os_disk {
